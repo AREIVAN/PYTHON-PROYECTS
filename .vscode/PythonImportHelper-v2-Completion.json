@@ -1,0 +1,351 @@
+[
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "tkinter",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "Workbook",
+        "importPath": "openpyxl",
+        "description": "openpyxl",
+        "isExtraImport": true,
+        "detail": "openpyxl",
+        "documentation": {}
+    },
+    {
+        "label": "URL",
+        "kind": 5,
+        "importPath": "api.apipokemon",
+        "description": "api.apipokemon",
+        "peekOfCode": "URL = \"https://pokeapi.co/api/v2/pokemon/\"\npokemon = input(\"Escribe el nombre el pokemon: \")\nrespuesta = requests.get(URL + pokemon)\ndatos = respuesta.json()\nprint(f\"-----Movimientos de{pokemon}:-----\")\nfor move in datos[\"moves\"]:\n    print(move[\"move\"][\"name\"])\nprint(f\"-----tipos de{pokemon}:-----\")\nfor type in datos[\"types\"]:\n    print(type[\"type\"][\"name\"])",
+        "detail": "api.apipokemon",
+        "documentation": {}
+    },
+    {
+        "label": "pokemon",
+        "kind": 5,
+        "importPath": "api.apipokemon",
+        "description": "api.apipokemon",
+        "peekOfCode": "pokemon = input(\"Escribe el nombre el pokemon: \")\nrespuesta = requests.get(URL + pokemon)\ndatos = respuesta.json()\nprint(f\"-----Movimientos de{pokemon}:-----\")\nfor move in datos[\"moves\"]:\n    print(move[\"move\"][\"name\"])\nprint(f\"-----tipos de{pokemon}:-----\")\nfor type in datos[\"types\"]:\n    print(type[\"type\"][\"name\"])",
+        "detail": "api.apipokemon",
+        "documentation": {}
+    },
+    {
+        "label": "respuesta",
+        "kind": 5,
+        "importPath": "api.apipokemon",
+        "description": "api.apipokemon",
+        "peekOfCode": "respuesta = requests.get(URL + pokemon)\ndatos = respuesta.json()\nprint(f\"-----Movimientos de{pokemon}:-----\")\nfor move in datos[\"moves\"]:\n    print(move[\"move\"][\"name\"])\nprint(f\"-----tipos de{pokemon}:-----\")\nfor type in datos[\"types\"]:\n    print(type[\"type\"][\"name\"])",
+        "detail": "api.apipokemon",
+        "documentation": {}
+    },
+    {
+        "label": "datos",
+        "kind": 5,
+        "importPath": "api.apipokemon",
+        "description": "api.apipokemon",
+        "peekOfCode": "datos = respuesta.json()\nprint(f\"-----Movimientos de{pokemon}:-----\")\nfor move in datos[\"moves\"]:\n    print(move[\"move\"][\"name\"])\nprint(f\"-----tipos de{pokemon}:-----\")\nfor type in datos[\"types\"]:\n    print(type[\"type\"][\"name\"])",
+        "detail": "api.apipokemon",
+        "documentation": {}
+    },
+    {
+        "label": "wb",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "wb = Workbook()\nws = wb.active\nws.append([\"Nombre\", \"Edad\", \"Email\", \"Telefono\", \"Direccion\"])\nwb.save('datos.xlsx')\nroot = tk.Tk()\nroot.title(\"Formulario de entrada de datos\")\nroot.configure(bg='#4B6587')\nlabel_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "ws",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "ws = wb.active\nws.append([\"Nombre\", \"Edad\", \"Email\", \"Telefono\", \"Direccion\"])\nwb.save('datos.xlsx')\nroot = tk.Tk()\nroot.title(\"Formulario de entrada de datos\")\nroot.configure(bg='#4B6587')\nlabel_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "root",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "root = tk.Tk()\nroot.title(\"Formulario de entrada de datos\")\nroot.configure(bg='#4B6587')\nlabel_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "label_style",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "label_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "entry_style",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "entry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "nombre_curso",
+        "kind": 5,
+        "importPath": "python.tipos.01-variables",
+        "description": "python.tipos.01-variables",
+        "peekOfCode": "nombre_curso = \"Ultimate Python\"\nnomre1 = \"Ultimate\"\nnombrecurso = \"Feliz\"\nprint(nombre_curso, nomre1, nombrecurso)\nalumnos = 5000\npuntaje = 9.9\npublicado = True",
+        "detail": "python.tipos.01-variables",
+        "documentation": {}
+    },
+    {
+        "label": "nomre1",
+        "kind": 5,
+        "importPath": "python.tipos.01-variables",
+        "description": "python.tipos.01-variables",
+        "peekOfCode": "nomre1 = \"Ultimate\"\nnombrecurso = \"Feliz\"\nprint(nombre_curso, nomre1, nombrecurso)\nalumnos = 5000\npuntaje = 9.9\npublicado = True",
+        "detail": "python.tipos.01-variables",
+        "documentation": {}
+    },
+    {
+        "label": "nombrecurso",
+        "kind": 5,
+        "importPath": "python.tipos.01-variables",
+        "description": "python.tipos.01-variables",
+        "peekOfCode": "nombrecurso = \"Feliz\"\nprint(nombre_curso, nomre1, nombrecurso)\nalumnos = 5000\npuntaje = 9.9\npublicado = True",
+        "detail": "python.tipos.01-variables",
+        "documentation": {}
+    },
+    {
+        "label": "alumnos",
+        "kind": 5,
+        "importPath": "python.tipos.01-variables",
+        "description": "python.tipos.01-variables",
+        "peekOfCode": "alumnos = 5000\npuntaje = 9.9\npublicado = True",
+        "detail": "python.tipos.01-variables",
+        "documentation": {}
+    },
+    {
+        "label": "puntaje",
+        "kind": 5,
+        "importPath": "python.tipos.01-variables",
+        "description": "python.tipos.01-variables",
+        "peekOfCode": "puntaje = 9.9\npublicado = True",
+        "detail": "python.tipos.01-variables",
+        "documentation": {}
+    },
+    {
+        "label": "publicado",
+        "kind": 5,
+        "importPath": "python.tipos.01-variables",
+        "description": "python.tipos.01-variables",
+        "peekOfCode": "publicado = True",
+        "detail": "python.tipos.01-variables",
+        "documentation": {}
+    },
+    {
+        "label": "nombre_curso",
+        "kind": 5,
+        "importPath": "python.tipos.02-strings",
+        "description": "python.tipos.02-strings",
+        "peekOfCode": "nombre_curso = \"Ultimate python\"\ndescripcion_curso = \"\"\"\nUltimate python,\neste curso contempla todos los detalles que necesitas\npara aprender como programador.\n\"\"\"\nprint(len(nombre_curso))\nprint(nombre_curso[0])\nprint(nombre_curso[0:8])\nprint(nombre_curso[9:])",
+        "detail": "python.tipos.02-strings",
+        "documentation": {}
+    },
+    {
+        "label": "descripcion_curso",
+        "kind": 5,
+        "importPath": "python.tipos.02-strings",
+        "description": "python.tipos.02-strings",
+        "peekOfCode": "descripcion_curso = \"\"\"\nUltimate python,\neste curso contempla todos los detalles que necesitas\npara aprender como programador.\n\"\"\"\nprint(len(nombre_curso))\nprint(nombre_curso[0])\nprint(nombre_curso[0:8])\nprint(nombre_curso[9:])\nprint(nombre_curso[:8])",
+        "detail": "python.tipos.02-strings",
+        "documentation": {}
+    },
+    {
+        "label": "nombre",
+        "kind": 5,
+        "importPath": "python.tipos.03.Format_strings",
+        "description": "python.tipos.03.Format_strings",
+        "peekOfCode": "nombre = \"Ivan\"\napellido = \"Angeles\"\nnombre_completo = f\"{nombre} {apellido}\"\nprint(nombre_completo)",
+        "detail": "python.tipos.03.Format_strings",
+        "documentation": {}
+    },
+    {
+        "label": "apellido",
+        "kind": 5,
+        "importPath": "python.tipos.03.Format_strings",
+        "description": "python.tipos.03.Format_strings",
+        "peekOfCode": "apellido = \"Angeles\"\nnombre_completo = f\"{nombre} {apellido}\"\nprint(nombre_completo)",
+        "detail": "python.tipos.03.Format_strings",
+        "documentation": {}
+    },
+    {
+        "label": "nombre_completo",
+        "kind": 5,
+        "importPath": "python.tipos.03.Format_strings",
+        "description": "python.tipos.03.Format_strings",
+        "peekOfCode": "nombre_completo = f\"{nombre} {apellido}\"\nprint(nombre_completo)",
+        "detail": "python.tipos.03.Format_strings",
+        "documentation": {}
+    },
+    {
+        "label": "animal",
+        "kind": 5,
+        "importPath": "python.tipos.04-metodos_strings",
+        "description": "python.tipos.04-metodos_strings",
+        "peekOfCode": "animal = \"  chanCHito feliz      \"\nprint(animal.upper())\nprint(animal.lower())\nprint(animal.strip().capitalize())\nprint(animal.title())\nprint(animal.strip())\nprint(animal.find(\"CH\"))\nprint(animal.replace(\"nCH\", \"j\"))\nprint(\"nCH\" in animal)",
+        "detail": "python.tipos.04-metodos_strings",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "x = 5\ny = \"John\"\nprint(x)  # se pueden cambiar de valor\nprint(y)\nx = str(3)    # x will be '3'\ny = int(3)    # y will be 3\nz = float(3)  # z will be 3.0 tienes que declarar el tipo de variable\nA = 4748934\na = \"dos\"\nprint(a)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "y = \"John\"\nprint(x)  # se pueden cambiar de valor\nprint(y)\nx = str(3)    # x will be '3'\ny = int(3)    # y will be 3\nz = float(3)  # z will be 3.0 tienes que declarar el tipo de variable\nA = 4748934\na = \"dos\"\nprint(a)\nprint(a, A)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "x = str(3)    # x will be '3'\ny = int(3)    # y will be 3\nz = float(3)  # z will be 3.0 tienes que declarar el tipo de variable\nA = 4748934\na = \"dos\"\nprint(a)\nprint(a, A)\nx, y, z = \"uno\", \"dois\", \"treis\"\nprint(x)\nprint(y)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "y = int(3)    # y will be 3\nz = float(3)  # z will be 3.0 tienes que declarar el tipo de variable\nA = 4748934\na = \"dos\"\nprint(a)\nprint(a, A)\nx, y, z = \"uno\", \"dois\", \"treis\"\nprint(x)\nprint(y)\nprint(z)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "z",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "z = float(3)  # z will be 3.0 tienes que declarar el tipo de variable\nA = 4748934\na = \"dos\"\nprint(a)\nprint(a, A)\nx, y, z = \"uno\", \"dois\", \"treis\"\nprint(x)\nprint(y)\nprint(z)\nx = y = z = \"dieciveinte\"",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "A",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "A = 4748934\na = \"dos\"\nprint(a)\nprint(a, A)\nx, y, z = \"uno\", \"dois\", \"treis\"\nprint(x)\nprint(y)\nprint(z)\nx = y = z = \"dieciveinte\"\nprint(x, y, z)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "a = \"dos\"\nprint(a)\nprint(a, A)\nx, y, z = \"uno\", \"dois\", \"treis\"\nprint(x)\nprint(y)\nprint(z)\nx = y = z = \"dieciveinte\"\nprint(x, y, z)\nfrutas = (\"primera\", \"segunda\", \"tercera\")",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "x = y = z = \"dieciveinte\"\nprint(x, y, z)\nfrutas = (\"primera\", \"segunda\", \"tercera\")\nx, y, z = frutas\nprint(z)\nx = 5\ny = \"ivan\"\nprint(x, y)\nprint(x, y, x)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "frutas",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "frutas = (\"primera\", \"segunda\", \"tercera\")\nx, y, z = frutas\nprint(z)\nx = 5\ny = \"ivan\"\nprint(x, y)\nprint(x, y, x)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "x = 5\ny = \"ivan\"\nprint(x, y)\nprint(x, y, x)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "y",
+        "kind": 5,
+        "importPath": "python.Untitled-1",
+        "description": "python.Untitled-1",
+        "peekOfCode": "y = \"ivan\"\nprint(x, y)\nprint(x, y, x)",
+        "detail": "python.Untitled-1",
+        "documentation": {}
+    },
+    {
+        "label": "chanchito",
+        "kind": 5,
+        "importPath": "python.format",
+        "description": "python.format",
+        "peekOfCode": "chanchito = \"Feliz\"\na = 12\nb = 13",
+        "detail": "python.format",
+        "documentation": {}
+    },
+    {
+        "label": "a",
+        "kind": 5,
+        "importPath": "python.format",
+        "description": "python.format",
+        "peekOfCode": "a = 12\nb = 13",
+        "detail": "python.format",
+        "documentation": {}
+    },
+    {
+        "label": "b",
+        "kind": 5,
+        "importPath": "python.format",
+        "description": "python.format",
+        "peekOfCode": "b = 13",
+        "detail": "python.format",
+        "documentation": {}
+    }
+]
