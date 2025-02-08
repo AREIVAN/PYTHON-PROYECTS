@@ -11,6 +11,24 @@
     {
         "label": "face_cascade",
         "kind": 5,
+        "importPath": "carros",
+        "description": "carros",
+        "peekOfCode": "face_cascade = cv2.CascadeClassifier('cars.xml')\ncap = cv2.VideoCapture(1)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)",
+        "detail": "carros",
+        "documentation": {}
+    },
+    {
+        "label": "cap",
+        "kind": 5,
+        "importPath": "carros",
+        "description": "carros",
+        "peekOfCode": "cap = cv2.VideoCapture(1)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)\n    if k == 27:",
+        "detail": "carros",
+        "documentation": {}
+    },
+    {
+        "label": "face_cascade",
+        "kind": 5,
         "importPath": "reconocimentofacial",
         "description": "reconocimentofacial",
         "peekOfCode": "face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')\ncap = cv2.VideoCapture(0)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)",
