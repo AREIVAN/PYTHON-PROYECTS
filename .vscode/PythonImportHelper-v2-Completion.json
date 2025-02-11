@@ -1,5 +1,14 @@
 [
     {
+        "label": "random",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "random",
+        "description": "random",
+        "detail": "random",
+        "documentation": {}
+    },
+    {
         "label": "requests",
         "kind": 6,
         "isExtraImport": true,
@@ -66,6 +75,105 @@
         "importPath": "cv2",
         "description": "cv2",
         "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "MINIMO",
+        "kind": 5,
+        "importPath": "3basicos.adivinaelnumero",
+        "description": "3basicos.adivinaelnumero",
+        "peekOfCode": "MINIMO = 1\ndificultad = input(\"Selecciona la dificultad (F,M,D): \")\nif dificultad == \"F\":\n    maximo = 10\nelif dificultad == \"M\":\n    maximo = 50\nelif dificultad == \"D\":\n    maximo = 100\nelif dificultad not in \"FMD\":\n    print(\"dificultad no valida\")",
+        "detail": "3basicos.adivinaelnumero",
+        "documentation": {}
+    },
+    {
+        "label": "dificultad",
+        "kind": 5,
+        "importPath": "3basicos.adivinaelnumero",
+        "description": "3basicos.adivinaelnumero",
+        "peekOfCode": "dificultad = input(\"Selecciona la dificultad (F,M,D): \")\nif dificultad == \"F\":\n    maximo = 10\nelif dificultad == \"M\":\n    maximo = 50\nelif dificultad == \"D\":\n    maximo = 100\nelif dificultad not in \"FMD\":\n    print(\"dificultad no valida\")\n    maximo = 10",
+        "detail": "3basicos.adivinaelnumero",
+        "documentation": {}
+    },
+    {
+        "label": "intentos",
+        "kind": 5,
+        "importPath": "3basicos.adivinaelnumero",
+        "description": "3basicos.adivinaelnumero",
+        "peekOfCode": "intentos = 0\nnumero_azar = random.randint(MINIMO, maximo)\nwhile True:\n    intento_usuario = int(\n        input(f\"Introdue un numero entre el 1 y el {maximo} : \"))\n    intentos += 1\n    if intento_usuario > numero_azar:\n        print(\"Te pasaste, el numero es mas pequeño que \" + str(intento_usuario))\n    elif intento_usuario < numero_azar:\n        print(\"Te quedaste corto, el numero es mas grande que \" +",
+        "detail": "3basicos.adivinaelnumero",
+        "documentation": {}
+    },
+    {
+        "label": "numero_azar",
+        "kind": 5,
+        "importPath": "3basicos.adivinaelnumero",
+        "description": "3basicos.adivinaelnumero",
+        "peekOfCode": "numero_azar = random.randint(MINIMO, maximo)\nwhile True:\n    intento_usuario = int(\n        input(f\"Introdue un numero entre el 1 y el {maximo} : \"))\n    intentos += 1\n    if intento_usuario > numero_azar:\n        print(\"Te pasaste, el numero es mas pequeño que \" + str(intento_usuario))\n    elif intento_usuario < numero_azar:\n        print(\"Te quedaste corto, el numero es mas grande que \" +\n              str(intento_usuario))",
+        "detail": "3basicos.adivinaelnumero",
+        "documentation": {}
+    },
+    {
+        "label": "numero1",
+        "kind": 5,
+        "importPath": "3basicos.calculadora",
+        "description": "3basicos.calculadora",
+        "peekOfCode": "numero1 = int(input(\"Introduce el primer numero: \"))\nnumero2 = int(input(\"introduce el segundo numero: \"))\noperaciones_posibles = [\"suma\", \"resta\", \"multiplicacion\", \"division\"]\noperacion = input(\"Introduce la operacion que quieres realizar: \")\ntry:\n    if operacion == \"suma\":\n        print(numero1 + numero2)\n    elif operacion == \"resta\":\n        print(numero1 - numero2)\n    elif operacion == \"multiplicacion\":",
+        "detail": "3basicos.calculadora",
+        "documentation": {}
+    },
+    {
+        "label": "numero2",
+        "kind": 5,
+        "importPath": "3basicos.calculadora",
+        "description": "3basicos.calculadora",
+        "peekOfCode": "numero2 = int(input(\"introduce el segundo numero: \"))\noperaciones_posibles = [\"suma\", \"resta\", \"multiplicacion\", \"division\"]\noperacion = input(\"Introduce la operacion que quieres realizar: \")\ntry:\n    if operacion == \"suma\":\n        print(numero1 + numero2)\n    elif operacion == \"resta\":\n        print(numero1 - numero2)\n    elif operacion == \"multiplicacion\":\n        print(numero1 * numero2)",
+        "detail": "3basicos.calculadora",
+        "documentation": {}
+    },
+    {
+        "label": "operaciones_posibles",
+        "kind": 5,
+        "importPath": "3basicos.calculadora",
+        "description": "3basicos.calculadora",
+        "peekOfCode": "operaciones_posibles = [\"suma\", \"resta\", \"multiplicacion\", \"division\"]\noperacion = input(\"Introduce la operacion que quieres realizar: \")\ntry:\n    if operacion == \"suma\":\n        print(numero1 + numero2)\n    elif operacion == \"resta\":\n        print(numero1 - numero2)\n    elif operacion == \"multiplicacion\":\n        print(numero1 * numero2)\n    elif operacion == \"division\":",
+        "detail": "3basicos.calculadora",
+        "documentation": {}
+    },
+    {
+        "label": "operacion",
+        "kind": 5,
+        "importPath": "3basicos.calculadora",
+        "description": "3basicos.calculadora",
+        "peekOfCode": "operacion = input(\"Introduce la operacion que quieres realizar: \")\ntry:\n    if operacion == \"suma\":\n        print(numero1 + numero2)\n    elif operacion == \"resta\":\n        print(numero1 - numero2)\n    elif operacion == \"multiplicacion\":\n        print(numero1 * numero2)\n    elif operacion == \"division\":\n        print(numero1 / numero2)",
+        "detail": "3basicos.calculadora",
+        "documentation": {}
+    },
+    {
+        "label": "movimientos",
+        "kind": 5,
+        "importPath": "3basicos.piedrapapeltijera",
+        "description": "3basicos.piedrapapeltijera",
+        "peekOfCode": "movimientos = [\"piedra\", \"papel\", \"tijera\"]\nmovimiento_ia = random.choice(movimientos)\nmovimiento_usuario = input(\"Introduce tu movimiento: (piedra,papel,tijera) \")\nif movimiento_usuario not in movimientos:\n    print(\"Movimiento no válido\")\n    quit()\nprint(F\"has elegido {movimiento_usuario}\")\nprint(F\"ha elegido {movimiento_ia}\")\nif movimiento_usuario == \"piedra\":\n    if movimiento_ia == \"papel\":",
+        "detail": "3basicos.piedrapapeltijera",
+        "documentation": {}
+    },
+    {
+        "label": "movimiento_ia",
+        "kind": 5,
+        "importPath": "3basicos.piedrapapeltijera",
+        "description": "3basicos.piedrapapeltijera",
+        "peekOfCode": "movimiento_ia = random.choice(movimientos)\nmovimiento_usuario = input(\"Introduce tu movimiento: (piedra,papel,tijera) \")\nif movimiento_usuario not in movimientos:\n    print(\"Movimiento no válido\")\n    quit()\nprint(F\"has elegido {movimiento_usuario}\")\nprint(F\"ha elegido {movimiento_ia}\")\nif movimiento_usuario == \"piedra\":\n    if movimiento_ia == \"papel\":\n        print(\"Perdiste\")",
+        "detail": "3basicos.piedrapapeltijera",
+        "documentation": {}
+    },
+    {
+        "label": "movimiento_usuario",
+        "kind": 5,
+        "importPath": "3basicos.piedrapapeltijera",
+        "description": "3basicos.piedrapapeltijera",
+        "peekOfCode": "movimiento_usuario = input(\"Introduce tu movimiento: (piedra,papel,tijera) \")\nif movimiento_usuario not in movimientos:\n    print(\"Movimiento no válido\")\n    quit()\nprint(F\"has elegido {movimiento_usuario}\")\nprint(F\"ha elegido {movimiento_ia}\")\nif movimiento_usuario == \"piedra\":\n    if movimiento_ia == \"papel\":\n        print(\"Perdiste\")\nelif movimiento_ia == \"tijera\":",
+        "detail": "3basicos.piedrapapeltijera",
         "documentation": {}
     },
     {

@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/areivan/Documents/GitHub/PYTHON-PROYECTS/3basicos",
+      "program": "/Users/areivan/Documents/GitHub/PYTHON-PROYECTS/3basicos/build/Debug/outDebug"
+    }
+  ]
+}
