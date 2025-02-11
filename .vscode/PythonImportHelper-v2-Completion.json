@@ -34,6 +34,41 @@
         "documentation": {}
     },
     {
+        "label": "load_workbook",
+        "importPath": "openpyxl",
+        "description": "openpyxl",
+        "isExtraImport": true,
+        "detail": "openpyxl",
+        "documentation": {}
+    },
+    {
+        "label": "re",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "re",
+        "description": "re",
+        "detail": "re",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
         "label": "URL",
         "kind": 5,
         "importPath": "api.apipokemon",
@@ -70,20 +105,20 @@
         "documentation": {}
     },
     {
-        "label": "wb",
-        "kind": 5,
+        "label": "guardar_datos",
+        "kind": 2,
         "importPath": "formulario1.formulas",
         "description": "formulario1.formulas",
-        "peekOfCode": "wb = Workbook()\nws = wb.active\nws.append([\"Nombre\", \"Edad\", \"Email\", \"Telefono\", \"Direccion\"])\nwb.save('datos.xlsx')\nroot = tk.Tk()\nroot.title(\"Formulario de entrada de datos\")\nroot.configure(bg='#4B6587')\nlabel_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "peekOfCode": "def guardar_datos():\n    nombre = entry_nombre.get()\n    edad = entry_edad.get()\n    mail = entry_mail.get()\n    telefono = entry_telefono.get()\n    direccion = entry_direccion.get()\n    if not nombre or not edad or not mail or not telefono or not direccion:\n        messagebox.showwarning(\n            \"Campos vacios\", \"Por favor llene todos los campos\")\n        return",
         "detail": "formulario1.formulas",
         "documentation": {}
     },
     {
-        "label": "ws",
+        "label": "nombre_archivo",
         "kind": 5,
         "importPath": "formulario1.formulas",
         "description": "formulario1.formulas",
-        "peekOfCode": "ws = wb.active\nws.append([\"Nombre\", \"Edad\", \"Email\", \"Telefono\", \"Direccion\"])\nwb.save('datos.xlsx')\nroot = tk.Tk()\nroot.title(\"Formulario de entrada de datos\")\nroot.configure(bg='#4B6587')\nlabel_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "peekOfCode": "nombre_archivo = 'datos.xlsx'\nif os.path.exists(nombre_archivo):\n    wb = load_workbook(nombre_archivo)\n    ws = wb.active\n# crear libro excel\nelse:\n    wb = Workbook()\n    ws = wb.active\n    ws.append([\"Nombre\", \"Edad\", \"Email\", \"Telefono\", \"Direccion\"])\ndef guardar_datos():",
         "detail": "formulario1.formulas",
         "documentation": {}
     },
@@ -92,7 +127,7 @@
         "kind": 5,
         "importPath": "formulario1.formulas",
         "description": "formulario1.formulas",
-        "peekOfCode": "root = tk.Tk()\nroot.title(\"Formulario de entrada de datos\")\nroot.configure(bg='#4B6587')\nlabel_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "peekOfCode": "root = tk.Tk()\nroot.title(\"Formulario de entrada de datos\")\nroot.configure(bg='#4B6587')  # fondo de la app\nlabel_style = {\"bg\": '#4B6587', \"fg\": \"white\"}  # fondo de las letras\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}  # fondo de la casilla\n# letras de nombre\nlabel_nombre = tk.Label(root, text=\"Nombre\", **label_style)\nlabel_nombre.grid(row=0, column=0, padx=10, pady=5)\n# insertar nombre\n# primero la entrada * estilo creado antes",
         "detail": "formulario1.formulas",
         "documentation": {}
     },
@@ -101,7 +136,7 @@
         "kind": 5,
         "importPath": "formulario1.formulas",
         "description": "formulario1.formulas",
-        "peekOfCode": "label_style = {\"bg\": '#4B6587', \"fg\": \"white\"}\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "peekOfCode": "label_style = {\"bg\": '#4B6587', \"fg\": \"white\"}  # fondo de las letras\nentry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}  # fondo de la casilla\n# letras de nombre\nlabel_nombre = tk.Label(root, text=\"Nombre\", **label_style)\nlabel_nombre.grid(row=0, column=0, padx=10, pady=5)\n# insertar nombre\n# primero la entrada * estilo creado antes\nentry_nombre = tk.Entry(root, **entry_style)\nentry_nombre.grid(row=0, column=1, padx=10, pady=5)  # grid y es donde ira\nlabel_edad = tk.Label(root, text=\"Edad\", **label_style)",
         "detail": "formulario1.formulas",
         "documentation": {}
     },
@@ -110,7 +145,106 @@
         "kind": 5,
         "importPath": "formulario1.formulas",
         "description": "formulario1.formulas",
-        "peekOfCode": "entry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}\nroot.mainloop()",
+        "peekOfCode": "entry_style = {\"bg\": '#D3D3D3', \"fg\": \"black\"}  # fondo de la casilla\n# letras de nombre\nlabel_nombre = tk.Label(root, text=\"Nombre\", **label_style)\nlabel_nombre.grid(row=0, column=0, padx=10, pady=5)\n# insertar nombre\n# primero la entrada * estilo creado antes\nentry_nombre = tk.Entry(root, **entry_style)\nentry_nombre.grid(row=0, column=1, padx=10, pady=5)  # grid y es donde ira\nlabel_edad = tk.Label(root, text=\"Edad\", **label_style)\nlabel_edad.grid(row=1, column=0, padx=10, pady=5)",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "label_nombre",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "label_nombre = tk.Label(root, text=\"Nombre\", **label_style)\nlabel_nombre.grid(row=0, column=0, padx=10, pady=5)\n# insertar nombre\n# primero la entrada * estilo creado antes\nentry_nombre = tk.Entry(root, **entry_style)\nentry_nombre.grid(row=0, column=1, padx=10, pady=5)  # grid y es donde ira\nlabel_edad = tk.Label(root, text=\"Edad\", **label_style)\nlabel_edad.grid(row=1, column=0, padx=10, pady=5)\nentry_edad = tk.Entry(root, **entry_style)\nentry_edad.grid(row=1, column=1, padx=10, pady=5)",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "entry_nombre",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "entry_nombre = tk.Entry(root, **entry_style)\nentry_nombre.grid(row=0, column=1, padx=10, pady=5)  # grid y es donde ira\nlabel_edad = tk.Label(root, text=\"Edad\", **label_style)\nlabel_edad.grid(row=1, column=0, padx=10, pady=5)\nentry_edad = tk.Entry(root, **entry_style)\nentry_edad.grid(row=1, column=1, padx=10, pady=5)\nlabel_mail = tk.Label(root, text=\"Mail\", **label_style)\nlabel_mail.grid(row=2, column=0, padx=10, pady=5)\nentry_mail = tk.Entry(root, **entry_style)\nentry_mail.grid(row=2, column=1, padx=10, pady=5)",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "label_edad",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "label_edad = tk.Label(root, text=\"Edad\", **label_style)\nlabel_edad.grid(row=1, column=0, padx=10, pady=5)\nentry_edad = tk.Entry(root, **entry_style)\nentry_edad.grid(row=1, column=1, padx=10, pady=5)\nlabel_mail = tk.Label(root, text=\"Mail\", **label_style)\nlabel_mail.grid(row=2, column=0, padx=10, pady=5)\nentry_mail = tk.Entry(root, **entry_style)\nentry_mail.grid(row=2, column=1, padx=10, pady=5)\nlabel_telefono = tk.Label(root, text=\"Telefono\", **label_style)\nlabel_telefono.grid(row=3, column=0, padx=10, pady=5)",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "entry_edad",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "entry_edad = tk.Entry(root, **entry_style)\nentry_edad.grid(row=1, column=1, padx=10, pady=5)\nlabel_mail = tk.Label(root, text=\"Mail\", **label_style)\nlabel_mail.grid(row=2, column=0, padx=10, pady=5)\nentry_mail = tk.Entry(root, **entry_style)\nentry_mail.grid(row=2, column=1, padx=10, pady=5)\nlabel_telefono = tk.Label(root, text=\"Telefono\", **label_style)\nlabel_telefono.grid(row=3, column=0, padx=10, pady=5)\nentry_telefono = tk.Entry(root, **entry_style)\nentry_telefono.grid(row=3, column=1, padx=10, pady=5)",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "label_mail",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "label_mail = tk.Label(root, text=\"Mail\", **label_style)\nlabel_mail.grid(row=2, column=0, padx=10, pady=5)\nentry_mail = tk.Entry(root, **entry_style)\nentry_mail.grid(row=2, column=1, padx=10, pady=5)\nlabel_telefono = tk.Label(root, text=\"Telefono\", **label_style)\nlabel_telefono.grid(row=3, column=0, padx=10, pady=5)\nentry_telefono = tk.Entry(root, **entry_style)\nentry_telefono.grid(row=3, column=1, padx=10, pady=5)\nlabel_direccion = tk.Label(root, text=\"Direccion\", **label_style)\nlabel_direccion.grid(row=4, column=0, padx=10, pady=5)",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "entry_mail",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "entry_mail = tk.Entry(root, **entry_style)\nentry_mail.grid(row=2, column=1, padx=10, pady=5)\nlabel_telefono = tk.Label(root, text=\"Telefono\", **label_style)\nlabel_telefono.grid(row=3, column=0, padx=10, pady=5)\nentry_telefono = tk.Entry(root, **entry_style)\nentry_telefono.grid(row=3, column=1, padx=10, pady=5)\nlabel_direccion = tk.Label(root, text=\"Direccion\", **label_style)\nlabel_direccion.grid(row=4, column=0, padx=10, pady=5)\nentry_direccion = tk.Entry(root, **entry_style)\nentry_direccion.grid(row=4, column=1, padx=10, pady=5)",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "label_telefono",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "label_telefono = tk.Label(root, text=\"Telefono\", **label_style)\nlabel_telefono.grid(row=3, column=0, padx=10, pady=5)\nentry_telefono = tk.Entry(root, **entry_style)\nentry_telefono.grid(row=3, column=1, padx=10, pady=5)\nlabel_direccion = tk.Label(root, text=\"Direccion\", **label_style)\nlabel_direccion.grid(row=4, column=0, padx=10, pady=5)\nentry_direccion = tk.Entry(root, **entry_style)\nentry_direccion.grid(row=4, column=1, padx=10, pady=5)\nboton_guardar = tk.Button(root, text=\"Guardar\",\n                          command=guardar_datos, bg='#6D8299', fg='white')",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "entry_telefono",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "entry_telefono = tk.Entry(root, **entry_style)\nentry_telefono.grid(row=3, column=1, padx=10, pady=5)\nlabel_direccion = tk.Label(root, text=\"Direccion\", **label_style)\nlabel_direccion.grid(row=4, column=0, padx=10, pady=5)\nentry_direccion = tk.Entry(root, **entry_style)\nentry_direccion.grid(row=4, column=1, padx=10, pady=5)\nboton_guardar = tk.Button(root, text=\"Guardar\",\n                          command=guardar_datos, bg='#6D8299', fg='white')\nboton_guardar.grid(row=5, column=0, columnspan=2, padx=10, pady=10)\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "label_direccion",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "label_direccion = tk.Label(root, text=\"Direccion\", **label_style)\nlabel_direccion.grid(row=4, column=0, padx=10, pady=5)\nentry_direccion = tk.Entry(root, **entry_style)\nentry_direccion.grid(row=4, column=1, padx=10, pady=5)\nboton_guardar = tk.Button(root, text=\"Guardar\",\n                          command=guardar_datos, bg='#6D8299', fg='white')\nboton_guardar.grid(row=5, column=0, columnspan=2, padx=10, pady=10)\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "entry_direccion",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "entry_direccion = tk.Entry(root, **entry_style)\nentry_direccion.grid(row=4, column=1, padx=10, pady=5)\nboton_guardar = tk.Button(root, text=\"Guardar\",\n                          command=guardar_datos, bg='#6D8299', fg='white')\nboton_guardar.grid(row=5, column=0, columnspan=2, padx=10, pady=10)\nroot.mainloop()",
+        "detail": "formulario1.formulas",
+        "documentation": {}
+    },
+    {
+        "label": "boton_guardar",
+        "kind": 5,
+        "importPath": "formulario1.formulas",
+        "description": "formulario1.formulas",
+        "peekOfCode": "boton_guardar = tk.Button(root, text=\"Guardar\",\n                          command=guardar_datos, bg='#6D8299', fg='white')\nboton_guardar.grid(row=5, column=0, columnspan=2, padx=10, pady=10)\nroot.mainloop()",
         "detail": "formulario1.formulas",
         "documentation": {}
     },
@@ -346,6 +480,42 @@
         "description": "python.format",
         "peekOfCode": "b = 13",
         "detail": "python.format",
+        "documentation": {}
+    },
+    {
+        "label": "face_cascade",
+        "kind": 5,
+        "importPath": "reconocimiento facial.carros",
+        "description": "reconocimiento facial.carros",
+        "peekOfCode": "face_cascade = cv2.CascadeClassifier('cars.xml')\ncap = cv2.VideoCapture(1)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)",
+        "detail": "reconocimiento facial.carros",
+        "documentation": {}
+    },
+    {
+        "label": "cap",
+        "kind": 5,
+        "importPath": "reconocimiento facial.carros",
+        "description": "reconocimiento facial.carros",
+        "peekOfCode": "cap = cv2.VideoCapture(1)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)\n    if k == 27:",
+        "detail": "reconocimiento facial.carros",
+        "documentation": {}
+    },
+    {
+        "label": "face_cascade",
+        "kind": 5,
+        "importPath": "reconocimiento facial.reconocimentofacial",
+        "description": "reconocimiento facial.reconocimentofacial",
+        "peekOfCode": "face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')\ncap = cv2.VideoCapture(0)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)",
+        "detail": "reconocimiento facial.reconocimentofacial",
+        "documentation": {}
+    },
+    {
+        "label": "cap",
+        "kind": 5,
+        "importPath": "reconocimiento facial.reconocimentofacial",
+        "description": "reconocimiento facial.reconocimentofacial",
+        "peekOfCode": "cap = cv2.VideoCapture(0)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)\n    if k == 27:",
+        "detail": "reconocimiento facial.reconocimentofacial",
         "documentation": {}
     }
 ]
