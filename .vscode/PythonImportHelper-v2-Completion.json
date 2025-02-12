@@ -177,6 +177,15 @@
         "documentation": {}
     },
     {
+        "label": "arr",
+        "kind": 5,
+        "importPath": "algoritmos de ordenamiento.por_insercion",
+        "description": "algoritmos de ordenamiento.por_insercion",
+        "peekOfCode": "arr = [5, 3, 4, 8, 7, 5, 1, 2, 3, 10, 92, 2]\nprint(\"Arreglo original:\", arr)\n# Algoritmo de ordenamiento por inserción\nfor j in range(1, len(arr)):\n    # Elemento actual a insertar en la parte ordenada del arreglo\n    actual = arr[j]\n    i = j - 1\n    # Desplazar elementos de la parte ordenada del arreglo hacia la derecha\n    # para hacer espacio para el elemento actual\n    while i >= 0 and arr[i] > actual:",
+        "detail": "algoritmos de ordenamiento.por_insercion",
+        "documentation": {}
+    },
+    {
         "label": "URL",
         "kind": 5,
         "importPath": "api.apipokemon",
