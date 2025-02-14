@@ -78,6 +78,24 @@
         "documentation": {}
     },
     {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
+        "label": "socket",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "socket",
+        "description": "socket",
+        "detail": "socket",
+        "documentation": {}
+    },
+    {
         "label": "MINIMO",
         "kind": 5,
         "importPath": "3basicos.adivinaelnumero",
@@ -633,6 +651,42 @@
         "description": "reconocimiento facial.reconocimentofacial",
         "peekOfCode": "cap = cv2.VideoCapture(0)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)\n    if k == 27:",
         "detail": "reconocimiento facial.reconocimentofacial",
+        "documentation": {}
+    },
+    {
+        "label": "longitud",
+        "kind": 5,
+        "importPath": "seguridad.generador",
+        "description": "seguridad.generador",
+        "peekOfCode": "longitud = int(input(\"Ingrese la longitud de la contraseña: \"))\ncaracteres = string.ascii_letters + string.digits + string.punctuation\ncontraseña = \"\".join(random.choice(caracteres) for i in range(longitud))\nprint(\"la contraseña generada es: \", contraseña)",
+        "detail": "seguridad.generador",
+        "documentation": {}
+    },
+    {
+        "label": "caracteres",
+        "kind": 5,
+        "importPath": "seguridad.generador",
+        "description": "seguridad.generador",
+        "peekOfCode": "caracteres = string.ascii_letters + string.digits + string.punctuation\ncontraseña = \"\".join(random.choice(caracteres) for i in range(longitud))\nprint(\"la contraseña generada es: \", contraseña)",
+        "detail": "seguridad.generador",
+        "documentation": {}
+    },
+    {
+        "label": "contraseña",
+        "kind": 5,
+        "importPath": "seguridad.generador",
+        "description": "seguridad.generador",
+        "peekOfCode": "contraseña = \"\".join(random.choice(caracteres) for i in range(longitud))\nprint(\"la contraseña generada es: \", contraseña)",
+        "detail": "seguridad.generador",
+        "documentation": {}
+    },
+    {
+        "label": "ip",
+        "kind": 5,
+        "importPath": "seguridad.portscaner",
+        "description": "seguridad.portscaner",
+        "peekOfCode": "ip = input(\"introduce la direccion IP a escanear:\")\nfor puerto in range(1, 35):\n    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)\n    sock.settimeout(5)\n    resultado = sock.connect_ex((ip, puerto))\n    if resultado == 0:\n        print(\"puerto abierto: \", puerto)\n        sock.close()\n    else:\n        print(\"puerto cerrado: \", puerto)",
+        "detail": "seguridad.portscaner",
         "documentation": {}
     }
 ]
