@@ -9,6 +9,48 @@
         "documentation": {}
     },
     {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "YOLO",
+        "importPath": "ultralytics",
+        "description": "ultralytics",
+        "isExtraImport": true,
+        "detail": "ultralytics",
+        "documentation": {}
+    },
+    {
         "label": "face_cascade",
         "kind": 5,
         "importPath": "carros",
@@ -24,6 +66,42 @@
         "description": "carros",
         "peekOfCode": "cap = cv2.VideoCapture(1)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)\n    if k == 27:",
         "detail": "carros",
+        "documentation": {}
+    },
+    {
+        "label": "red_mask_hsv",
+        "kind": 2,
+        "importPath": "pruebavideo",
+        "description": "pruebavideo",
+        "peekOfCode": "def red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"\n    Máscara de rojo en HSV (rojo se parte en dos rangos).\n    Para día: v_min relativamente bajo (60-110) y s_min moderado (70-120).\n    \"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)\n    upper1 = np.array([10,  255,   255], dtype=np.uint8)\n    lower2 = np.array([170, s_min, v_min], dtype=np.uint8)\n    upper2 = np.array([180, 255,   255], dtype=np.uint8)",
+        "detail": "pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "find_stop_light_boxes",
+        "kind": 2,
+        "importPath": "pruebavideo",
+        "description": "pruebavideo",
+        "peekOfCode": "def find_stop_light_boxes(vehicle_roi: np.ndarray,\n                          x0: int, y0: int,\n                          bottom_frac: float,\n                          s_min: int, v_min: int,\n                          min_area: int,\n                          max_area_frac: float,\n                          min_solidity: float):\n    \"\"\"\n    Busca blobs rojos en el % inferior del vehículo.\n    Devuelve lista de boxes globales (x1,y1,x2,y2) y la máscara (debug).",
+        "detail": "pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "pruebavideo",
+        "description": "pruebavideo",
+        "peekOfCode": "def main():\n    ap = argparse.ArgumentParser()\n    ap.add_argument(\"--input\", required=True, help=\"Video de entrada .mp4\")\n    ap.add_argument(\"--output\", default=\"out_cars_stop.mp4\",\n                    help=\"Video de salida .mp4\")\n    ap.add_argument(\"--model\", default=\"yolo12n.pt\",\n                    help=\"Modelo YOLO (ej: yolo12n.pt)\")\n    ap.add_argument(\"--tracker\", default=\"bytetrack.yaml\",\n                    help=\"bytetrack.yaml o botsort.yaml\")\n    ap.add_argument(\"--conf\", type=float, default=0.25, help=\"Confianza YOLO\")",
+        "detail": "pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "VEHICLE_CLASSES",
+        "kind": 5,
+        "importPath": "pruebavideo",
+        "description": "pruebavideo",
+        "peekOfCode": "VEHICLE_CLASSES = [2, 3, 5, 7]\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"\n    Máscara de rojo en HSV (rojo se parte en dos rangos).\n    Para día: v_min relativamente bajo (60-110) y s_min moderado (70-120).\n    \"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)\n    upper1 = np.array([10,  255,   255], dtype=np.uint8)\n    lower2 = np.array([170, s_min, v_min], dtype=np.uint8)",
+        "detail": "pruebavideo",
         "documentation": {}
     },
     {
