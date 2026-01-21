@@ -5,15 +5,14 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 
-# COCO: car=2, motorcycle=3, bus=5, truck=7
-VEHICLE_CLASSES = [2, 3, 5, 7]
+# COCO ids:
+# person=0, bicycle=1, car=2, motorcycle=3, bus=5, truck=7
+# Si quieres también personas y bicis, cambia a: [0, 1, 2, 3, 5, 7]
+VEHICLE_CLASSES = [0, 1, 2, 3, 5, 7]
 
 
 def red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:
-    """
-    Máscara de rojo en HSV (rojo se parte en dos rangos).
-    Para día: v_min relativamente bajo (60-110) y s_min moderado (70-120).
-    """
+    """Máscara de rojo en HSV (rojo se parte en dos rangos)."""
     hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)
 
     lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)
@@ -25,7 +24,6 @@ def red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:
     m2 = cv2.inRange(hsv, lower2, upper2)
     mask = cv2.bitwise_or(m1, m2)
 
-    # Limpieza
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
     mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel, iterations=1)
     mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel, iterations=2)
@@ -39,10 +37,7 @@ def find_stop_light_boxes(vehicle_roi: np.ndarray,
                           min_area: int,
                           max_area_frac: float,
                           min_solidity: float):
-    """
-    Busca blobs rojos en el % inferior del vehículo.
-    Devuelve lista de boxes globales (x1,y1,x2,y2) y la máscara (debug).
-    """
+    """Busca blobs rojos en el % inferior del vehículo."""
     h, w = vehicle_roi.shape[:2]
     if h < 8 or w < 8:
         return [], None
@@ -54,8 +49,7 @@ def find_stop_light_boxes(vehicle_roi: np.ndarray,
 
     mask = red_mask_hsv(roi, s_min=s_min, v_min=v_min)
 
-    contours, _ = cv2.findContours(
-        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     max_area = int(roi.shape[0] * roi.shape[1] * max_area_frac)
 
     boxes = []
@@ -64,7 +58,6 @@ def find_stop_light_boxes(vehicle_roi: np.ndarray,
         if area < min_area or area > max_area:
             continue
 
-        # Solidity para filtrar ruido (área / área del convex hull)
         hull = cv2.convexHull(cnt)
         hull_area = float(cv2.contourArea(hull)) if hull is not None else 0.0
         if hull_area > 0:
@@ -77,7 +70,6 @@ def find_stop_light_boxes(vehicle_roi: np.ndarray,
             continue
 
         aspect = bw / float(bh)
-        # Filtro suave para formas razonables
         if aspect < 0.3 or aspect > 10.0:
             continue
 
@@ -93,38 +85,26 @@ def find_stop_light_boxes(vehicle_roi: np.ndarray,
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", required=True, help="Video de entrada .mp4")
-    ap.add_argument("--output", default="out_cars_stop.mp4",
-                    help="Video de salida .mp4")
-    ap.add_argument("--model", default="yolo12n.pt",
-                    help="Modelo YOLO (ej: yolo12n.pt)")
-    ap.add_argument("--tracker", default="bytetrack.yaml",
-                    help="bytetrack.yaml o botsort.yaml")
+    ap.add_argument("--output", default="out_cars_stop.mp4", help="Video de salida .mp4")
+    ap.add_argument("--model", default="yolo12n.pt", help="Modelo YOLO (ej: yolo12n.pt)")
+    ap.add_argument("--tracker", default="bytetrack.yaml", help="bytetrack.yaml o botsort.yaml")
     ap.add_argument("--conf", type=float, default=0.25, help="Confianza YOLO")
-    ap.add_argument("--trail", type=int, default=0,
-                    help="Longitud del trail (0 desactiva)")
-    ap.add_argument("--bottom-frac", type=float, default=0.45,
-                    help="Zona inferior del coche a analizar (día: 0.40-0.55)")
+    ap.add_argument("--trail", type=int, default=0, help="Longitud del trail (0 desactiva)")
+    ap.add_argument("--bottom-frac", type=float, default=0.45, help="Zona inferior del coche a analizar (día: 0.40-0.55)")
 
-    # HSV thresholds (día)
-    ap.add_argument("--s-min", type=int, default=85,
-                    help="S mínimo (día típico 70-120)")
-    ap.add_argument("--v-min", type=int, default=70,
-                    help="V mínimo (día típico 60-110)")
+    ap.add_argument("--s-min", type=int, default=85, help="S mínimo (día típico 70-120)")
+    ap.add_argument("--v-min", type=int, default=70, help="V mínimo (día típico 60-110)")
 
-    # Filtros blobs
-    ap.add_argument("--min-area", type=int, default=60,
-                    help="Área mínima blob (1080p día: 40-120)")
-    ap.add_argument("--max-area-frac", type=float, default=0.08,
-                    help="Área máxima relativa por blob")
-    ap.add_argument("--min-solidity", type=float, default=0.35,
-                    help="Solidity mínima (0.25-0.60)")
-    ap.add_argument("--show", action="store_true",
-                    help="Muestra ventana en vivo")
-    ap.add_argument("--show-mask", action="store_true",
-                    help="Muestra máscara del último vehículo (debug)")
+    ap.add_argument("--min-area", type=int, default=60, help="Área mínima blob")
+    ap.add_argument("--max-area-frac", type=float, default=0.08, help="Área máxima relativa por blob")
+    ap.add_argument("--min-solidity", type=float, default=0.35, help="Solidity mínima (0.25-0.60)")
+
+    ap.add_argument("--show", action="store_true", help="Muestra ventana en vivo")
+    ap.add_argument("--show-mask", action="store_true", help="Muestra máscara del último vehículo (debug)")
     args = ap.parse_args()
 
     model = YOLO(args.model)
+    names = model.names  # <- aquí están los nombres: {2:'car', 3:'motorcycle', ...}
 
     cap = cv2.VideoCapture(args.input)
     if not cap.isOpened():
@@ -145,7 +125,6 @@ def main():
         if not ok:
             break
 
-        # Track vehículos con ID persistente
         results = model.track(
             source=frame,
             conf=args.conf,
@@ -162,23 +141,23 @@ def main():
             boxes_xyxy = r.boxes.xyxy.cpu().numpy().astype(int)
             ids = r.boxes.id.cpu().numpy().astype(int)
             confs = r.boxes.conf.cpu().numpy()
+            clss = r.boxes.cls.cpu().numpy().astype(int)  # <- CLASES
 
-            for (x1, y1, x2, y2), tid, cf in zip(boxes_xyxy, ids, confs):
+            for (x1, y1, x2, y2), tid, cf, cls_id in zip(boxes_xyxy, ids, confs, clss):
                 x1, y1 = max(0, x1), max(0, y1)
                 x2, y2 = min(W - 1, x2), min(H - 1, y2)
                 if x2 <= x1 or y2 <= y1:
                     continue
 
-                # Trail
+                cls_name = names.get(int(cls_id), str(int(cls_id)))  # <- nombre
+
                 if args.trail > 0:
                     cx = int((x1 + x2) / 2)
                     cy = int((y1 + y2) / 2)
                     trails[tid].append((cx, cy))
 
-                # ROI del vehículo
                 vehicle_roi = frame[y1:y2, x1:x2]
 
-                # Detecta stop-lights dentro del ROI
                 light_boxes, mask = find_stop_light_boxes(
                     vehicle_roi=vehicle_roi,
                     x0=x1, y0=y1,
@@ -191,18 +170,17 @@ def main():
                 )
                 last_mask = mask
 
-                # Dibuja bbox vehículo + ID
+                # BBox vehículo + etiqueta con clase
                 cv2.rectangle(out, (x1, y1), (x2, y2), (255, 255, 255), 1)
-                cv2.putText(out, f"ID {tid}  {cf:.2f}", (x1, max(0, y1 - 6)),
+                cv2.putText(out, f"{cls_name} ID {tid}  {cf:.2f}", (x1, max(0, y1 - 6)),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
-                # Dibuja luces
-                for lx1, ly1, lx2, ly2, area in light_boxes:
+                # Luces stop
+                for lx1, ly1, lx2, ly2, _area in light_boxes:
                     cv2.rectangle(out, (lx1, ly1), (lx2, ly2), (0, 255, 0), 2)
                     cv2.putText(out, "STOP", (lx1, max(0, ly1 - 6)),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 2)
 
-        # Dibuja trails
         if args.trail > 0:
             for tid, pts in trails.items():
                 if len(pts) < 2:
