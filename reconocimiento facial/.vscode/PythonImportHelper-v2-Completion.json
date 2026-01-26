@@ -60,12 +60,29 @@
         "documentation": {}
     },
     {
-        "label": "time",
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "os",
         "kind": 6,
         "isExtraImport": true,
-        "importPath": "time",
-        "description": "time",
-        "detail": "time",
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -129,11 +146,29 @@
         "documentation": {}
     },
     {
+        "label": "abrir_archivo",
+        "kind": 2,
+        "importPath": "gui_pruebavideo",
+        "description": "gui_pruebavideo",
+        "peekOfCode": "def abrir_archivo(path: Path):\n    \"\"\"Abre un archivo con la app por defecto (Windows/Mac/Linux).\"\"\"\n    try:\n        if sys.platform.startswith(\"win\"):\n            os.startfile(str(path))  # type: ignore[attr-defined]\n        elif sys.platform == \"darwin\":\n            subprocess.run([\"open\", str(path)], check=False)\n        else:\n            subprocess.run([\"xdg-open\", str(path)], check=False)\n    except Exception as exc:",
+        "detail": "gui_pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "abrir_carpeta",
+        "kind": 2,
+        "importPath": "gui_pruebavideo",
+        "description": "gui_pruebavideo",
+        "peekOfCode": "def abrir_carpeta(path: Path):\n    \"\"\"Abre la carpeta que contiene el archivo.\"\"\"\n    folder = path.parent\n    try:\n        if sys.platform.startswith(\"win\"):\n            os.startfile(str(folder))  # type: ignore[attr-defined]\n        elif sys.platform == \"darwin\":\n            subprocess.run([\"open\", str(folder)], check=False)\n        else:\n            subprocess.run([\"xdg-open\", str(folder)], check=False)",
+        "detail": "gui_pruebavideo",
+        "documentation": {}
+    },
+    {
         "label": "procesar_video",
         "kind": 2,
         "importPath": "gui_pruebavideo",
         "description": "gui_pruebavideo",
-        "peekOfCode": "def procesar_video(video_path, progress_bar, ventana):\n    \"\"\"Llama al script de procesamiento con el video seleccionado.\"\"\"\n    def run():\n        try:\n            output_path = \"output_video.mp4\"\n            # Simula progreso mientras se ejecuta el procesamiento\n            for i in range(1, 101):\n                time.sleep(0.05)\n                progress_bar[\"value\"] = i\n                ventana.update_idletasks()",
+        "peekOfCode": "def procesar_video(video_path: str, ventana: tk.Tk):\n    input_p = Path(video_path)\n    output_path = input_p.with_name(input_p.stem + \"_processed.mp4\")\n    # UI refs\n    progress_bar = ventana._progress_bar\n    boton_seleccionar = ventana._boton_seleccionar\n    boton_abrir = ventana._boton_abrir\n    boton_carpeta = ventana._boton_carpeta\n    salida_var = ventana._salida_var\n    # Preparar UI",
         "detail": "gui_pruebavideo",
         "documentation": {}
     },
@@ -142,7 +177,7 @@
         "kind": 2,
         "importPath": "gui_pruebavideo",
         "description": "gui_pruebavideo",
-        "peekOfCode": "def seleccionar_video(progress_bar, ventana):\n    \"\"\"Abre un cuadro de diálogo para seleccionar el archivo de video.\"\"\"\n    video_path = filedialog.askopenfilename(\n        title=\"Seleccionar video\",\n        filetypes=[(\"Archivos de video\", \"*.mp4 *.avi *.mov *.mkv\")],\n    )\n    if video_path:\n        procesar_video(video_path, progress_bar, ventana)\ndef main():\n    ventana = tk.Tk()",
+        "peekOfCode": "def seleccionar_video(ventana: tk.Tk):\n    video_path = filedialog.askopenfilename(\n        title=\"Seleccionar video\",\n        filetypes=[(\"Archivos de video\", \"*.mp4 *.avi *.mov *.mkv\")],\n    )\n    if video_path:\n        procesar_video(video_path, ventana)\ndef main():\n    ventana = tk.Tk()\n    ventana.title(\"Procesador de Videos\")",
         "detail": "gui_pruebavideo",
         "documentation": {}
     },
@@ -151,7 +186,7 @@
         "kind": 2,
         "importPath": "gui_pruebavideo",
         "description": "gui_pruebavideo",
-        "peekOfCode": "def main():\n    ventana = tk.Tk()\n    ventana.title(\"Procesador de Videos\")\n    ventana.geometry(\"400x250\")\n    etiqueta = tk.Label(\n        ventana, text=\"Selecciona un video para procesar\", font=(\"Arial\", 14)\n    )\n    etiqueta.pack(pady=20)\n    progress_bar = ttk.Progressbar(\n        ventana, orient=\"horizontal\", length=300, mode=\"determinate\"",
+        "peekOfCode": "def main():\n    ventana = tk.Tk()\n    ventana.title(\"Procesador de Videos\")\n    ventana.geometry(\"520x320\")\n    ventana.resizable(False, False)\n    ventana._last_output_path = None  # type: ignore[attr-defined]\n    ventana._salida_var = tk.StringVar(\n        value=\"Selecciona un video para procesar\")  # type: ignore[attr-defined]\n    etiqueta = tk.Label(\n        ventana, text=\"Procesador de Videos\", font=(\"Arial\", 16))",
         "detail": "gui_pruebavideo",
         "documentation": {}
     },
