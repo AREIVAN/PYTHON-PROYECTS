@@ -8,7 +8,17 @@ from ultralytics import YOLO
 # COCO ids:
 # person=0, bicycle=1, car=2, motorcycle=3, bus=5, truck=7
 # Si quieres también personas y bicis, cambia a: [0, 1, 2, 3, 5, 7]
-VEHICLE_CLASSES = [0, 1, 2, 3, 5, 7]
+VEHICLE_CLASSES = [0, 1, 2, 3, 5, 6, 7, 9, 11, 14, 15, 16, 25, 32, 36, 67,]
+
+# Grosor recomendado para 2.7K
+VEH_THICK = 5
+STOP_THICK = 6
+TRAIL_THICK = 5
+
+# Texto
+FONT_SCALE_VEH = 1.0
+FONT_SCALE_STOP = 0.9
+TEXT_THICK = 4
 
 
 def red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:
@@ -49,7 +59,8 @@ def find_stop_light_boxes(vehicle_roi: np.ndarray,
 
     mask = red_mask_hsv(roi, s_min=s_min, v_min=v_min)
 
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    contours, _ = cv2.findContours(
+        mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     max_area = int(roi.shape[0] * roi.shape[1] * max_area_frac)
 
     boxes = []
@@ -85,26 +96,39 @@ def find_stop_light_boxes(vehicle_roi: np.ndarray,
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", required=True, help="Video de entrada .mp4")
-    ap.add_argument("--output", default="out_cars_stop.mp4", help="Video de salida .mp4")
-    ap.add_argument("--model", default="yolo12n.pt", help="Modelo YOLO (ej: yolo12n.pt)")
-    ap.add_argument("--tracker", default="bytetrack.yaml", help="bytetrack.yaml o botsort.yaml")
+    ap.add_argument("--output", default="out_cars_stop.mp4",
+                    help="Video de salida .mp4")
+    ap.add_argument("--model", default="yolo12n.pt",
+                    help="Modelo YOLO (ej: yolo12n.pt)")
+    ap.add_argument("--tracker", default="bytetrack.yaml",
+                    help="bytetrack.yaml o botsort.yaml")
     ap.add_argument("--conf", type=float, default=0.25, help="Confianza YOLO")
-    ap.add_argument("--trail", type=int, default=0, help="Longitud del trail (0 desactiva)")
-    ap.add_argument("--bottom-frac", type=float, default=0.45, help="Zona inferior del coche a analizar (día: 0.40-0.55)")
+    ap.add_argument("--trail", type=int, default=0,
+                    help="Longitud del trail (0 desactiva)")
+    ap.add_argument("--bottom-frac", type=float, default=0.45,
+                    help="Zona inferior del coche a analizar (día: 0.40-0.55)")
 
-    ap.add_argument("--s-min", type=int, default=85, help="S mínimo (día típico 70-120)")
-    ap.add_argument("--v-min", type=int, default=70, help="V mínimo (día típico 60-110)")
+    ap.add_argument("--s-min", type=int, default=85,
+                    help="S mínimo (día típico 70-120)")
+    ap.add_argument("--v-min", type=int, default=70,
+                    help="V mínimo (día típico 60-110)")
 
-    ap.add_argument("--min-area", type=int, default=60, help="Área mínima blob")
-    ap.add_argument("--max-area-frac", type=float, default=0.08, help="Área máxima relativa por blob")
-    ap.add_argument("--min-solidity", type=float, default=0.35, help="Solidity mínima (0.25-0.60)")
+    ap.add_argument("--min-area", type=int, default=60,
+                    help="Área mínima blob")
+    ap.add_argument("--max-area-frac", type=float, default=0.08,
+                    help="Área máxima relativa por blob")
+    ap.add_argument("--min-solidity", type=float, default=0.35,
+                    help="Solidity mínima (0.25-0.60)")
 
-    ap.add_argument("--show", action="store_true", help="Muestra ventana en vivo")
-    ap.add_argument("--show-mask", action="store_true", help="Muestra máscara del último vehículo (debug)")
+    ap.add_argument("--show", action="store_true",
+                    help="Muestra ventana en vivo")
+    ap.add_argument("--show-mask", action="store_true",
+                    help="Muestra máscara del último vehículo (debug)")
     args = ap.parse_args()
 
     model = YOLO(args.model)
-    names = model.names  # <- aquí están los nombres: {2:'car', 3:'motorcycle', ...}
+    # <- aquí están los nombres: {2:'car', 3:'motorcycle', ...}
+    names = model.names
 
     cap = cv2.VideoCapture(args.input)
     if not cap.isOpened():
@@ -149,7 +173,8 @@ def main():
                 if x2 <= x1 or y2 <= y1:
                     continue
 
-                cls_name = names.get(int(cls_id), str(int(cls_id)))  # <- nombre
+                cls_name = names.get(
+                    int(cls_id), str(int(cls_id)))  # <- nombre
 
                 if args.trail > 0:
                     cx = int((x1 + x2) / 2)
@@ -171,23 +196,24 @@ def main():
                 last_mask = mask
 
                 # BBox vehículo + etiqueta con clase
-                cv2.rectangle(out, (x1, y1), (x2, y2), (255, 255, 255), 1)
-                cv2.putText(out, f"{cls_name} ID {tid}  {cf:.2f}", (x1, max(0, y1 - 6)),
-                            cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
+                cv2.rectangle(out, (x1, y1), (x2, y2),
+                              (255, 255, 255), VEH_THICK)
+                cv2.putText(out, f"{cls_name} ID {tid}  {cf:.2f}", (x1, max(0, y1 - 10)),
+                            cv2.FONT_HERSHEY_SIMPLEX, FONT_SCALE_VEH, (255, 255, 255), TEXT_THICK)
 
-                # Luces stop
                 for lx1, ly1, lx2, ly2, _area in light_boxes:
-                    cv2.rectangle(out, (lx1, ly1), (lx2, ly2), (0, 255, 0), 2)
-                    cv2.putText(out, "STOP", (lx1, max(0, ly1 - 6)),
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 255, 0), 2)
+                    cv2.rectangle(out, (lx1, ly1), (lx2, ly2),
+                                  (0, 255, 0), STOP_THICK)
+                    cv2.putText(out, "STOP", (lx1, max(0, ly1 - 10)),
+                                cv2.FONT_HERSHEY_SIMPLEX, FONT_SCALE_STOP, (0, 255, 0), TEXT_THICK)
 
         if args.trail > 0:
             for tid, pts in trails.items():
                 if len(pts) < 2:
                     continue
                 for i in range(1, len(pts)):
-                    cv2.line(out, pts[i - 1], pts[i], (255, 0, 255), 2)
-
+                    cv2.line(out, pts[i - 1], pts[i],
+                             (255, 0, 255), TRAIL_THICK)
         writer.write(out)
 
         if args.show:
