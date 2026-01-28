@@ -27,11 +27,59 @@
         "documentation": {}
     },
     {
+        "label": "ttk",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
         "label": "messagebox",
         "importPath": "tkinter",
         "description": "tkinter",
         "isExtraImport": true,
         "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "filedialog",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "messagebox",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "ttk",
+        "importPath": "tkinter",
+        "description": "tkinter",
+        "isExtraImport": true,
+        "detail": "tkinter",
+        "documentation": {}
+    },
+    {
+        "label": "MecanismoKutzbach",
+        "importPath": "kutzbach",
+        "description": "kutzbach",
+        "isExtraImport": true,
+        "detail": "kutzbach",
         "documentation": {}
     },
     {
@@ -75,6 +123,83 @@
         "importPath": "cv2",
         "description": "cv2",
         "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "subprocess",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "subprocess",
+        "description": "subprocess",
+        "detail": "subprocess",
+        "documentation": {}
+    },
+    {
+        "label": "threading",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "threading",
+        "description": "threading",
+        "detail": "threading",
+        "documentation": {}
+    },
+    {
+        "label": "Path",
+        "importPath": "pathlib",
+        "description": "pathlib",
+        "isExtraImport": true,
+        "detail": "pathlib",
+        "documentation": {}
+    },
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "argparse",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "argparse",
+        "description": "argparse",
+        "detail": "argparse",
+        "documentation": {}
+    },
+    {
+        "label": "defaultdict",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "numpy",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "numpy",
+        "description": "numpy",
+        "detail": "numpy",
+        "documentation": {}
+    },
+    {
+        "label": "YOLO",
+        "importPath": "ultralytics",
+        "description": "ultralytics",
+        "isExtraImport": true,
+        "detail": "ultralytics",
         "documentation": {}
     },
     {
@@ -237,6 +362,42 @@
         "description": "api.apipokemon",
         "peekOfCode": "datos = respuesta.json()\nprint(f\"-----Movimientos de{pokemon}:-----\")\nfor move in datos[\"moves\"]:\n    print(move[\"move\"][\"name\"])\nprint(f\"-----tipos de{pokemon}:-----\")\nfor type in datos[\"types\"]:\n    print(type[\"type\"][\"name\"])",
         "detail": "api.apipokemon",
+        "documentation": {}
+    },
+    {
+        "label": "MecanismoKutzbach",
+        "kind": 6,
+        "importPath": "escuela.kutzbach",
+        "description": "escuela.kutzbach",
+        "peekOfCode": "class MecanismoKutzbach:\n    \"\"\"\n    Clase para calcular grados de libertad usando el criterio de Kutzbach\n    Fórmula 2D (planar):\n    M = 3(n - 1) - 2j1 - j2\n    Fórmula 3D (espacial):\n    M = 6(n - 1) - 5j1 - 4j2 - 3j3 - 2j4 - j5\n    Donde:\n    - M = grados de libertad\n    - n = número de eslabones",
+        "detail": "escuela.kutzbach",
+        "documentation": {}
+    },
+    {
+        "label": "resolver_problema",
+        "kind": 2,
+        "importPath": "escuela.kutzbach",
+        "description": "escuela.kutzbach",
+        "peekOfCode": "def resolver_problema(problema):\n    \"\"\"\n    Resuelve un problema específico de Kutzbach\n    problema: diccionario con los parámetros\n    \"\"\"\n    mec = MecanismoKutzbach(problema.get(\"dimension\", \"2D\"))\n    mec.establecer_eslabones(problema[\"eslabones\"])\n    for tipo, cantidad in problema.get(\"pares\", {}).items():\n        mec.agregar_pares(tipo, cantidad)\n    return mec",
+        "detail": "escuela.kutzbach",
+        "documentation": {}
+    },
+    {
+        "label": "KutzbachGUI",
+        "kind": 6,
+        "importPath": "escuela.kutzbach_gui",
+        "description": "escuela.kutzbach_gui",
+        "peekOfCode": "class KutzbachGUI:\n    \"\"\"Interfaz gráfica para el calculador de Kutzbach\"\"\"\n    def __init__(self, root):\n        self.root = root\n        self.root.title(\"Calculador de Kutzbach - Grados de Libertad\")\n        self.root.geometry(\"900x1000\")\n        self.root.resizable(True, True)\n        # Variable para almacenar pares ingresados\n        self.pares_ingresados = {}\n        self.mecanismo = None",
+        "detail": "escuela.kutzbach_gui",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "escuela.kutzbach_gui",
+        "description": "escuela.kutzbach_gui",
+        "peekOfCode": "def main():\n    root = tk.Tk()\n    app = KutzbachGUI(root)\n    root.mainloop()\nif __name__ == \"__main__\":\n    main()",
+        "detail": "escuela.kutzbach_gui",
         "documentation": {}
     },
     {
@@ -633,6 +794,141 @@
         "description": "reconocimiento facial.carros",
         "peekOfCode": "cap = cv2.VideoCapture(1)\nwhile True:\n    _, img = cap.read()\n    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)\n    faces = face_cascade.detectMultiScale(gray, 1.1, 4)\n    for (x, y, w, h) in faces:\n        cv2.rectangle(img, (x, y), (x+w, y+h), (255, 0, 0), 2)\n        cv2.imshow('img', img)\n    k = cv2.waitKey(30)\n    if k == 27:",
         "detail": "reconocimiento facial.carros",
+        "documentation": {}
+    },
+    {
+        "label": "abrir_archivo",
+        "kind": 2,
+        "importPath": "reconocimiento facial.gui_pruebavideo",
+        "description": "reconocimiento facial.gui_pruebavideo",
+        "peekOfCode": "def abrir_archivo(path: Path):\n    \"\"\"Abre un archivo con la app por defecto (Windows/Mac/Linux).\"\"\"\n    try:\n        if sys.platform.startswith(\"win\"):\n            os.startfile(str(path))  # type: ignore[attr-defined]\n        elif sys.platform == \"darwin\":\n            subprocess.run([\"open\", str(path)], check=False)\n        else:\n            subprocess.run([\"xdg-open\", str(path)], check=False)\n    except Exception as exc:",
+        "detail": "reconocimiento facial.gui_pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "abrir_carpeta",
+        "kind": 2,
+        "importPath": "reconocimiento facial.gui_pruebavideo",
+        "description": "reconocimiento facial.gui_pruebavideo",
+        "peekOfCode": "def abrir_carpeta(path: Path):\n    \"\"\"Abre la carpeta que contiene el archivo.\"\"\"\n    folder = path.parent\n    try:\n        if sys.platform.startswith(\"win\"):\n            os.startfile(str(folder))  # type: ignore[attr-defined]\n        elif sys.platform == \"darwin\":\n            subprocess.run([\"open\", str(folder)], check=False)\n        else:\n            subprocess.run([\"xdg-open\", str(folder)], check=False)",
+        "detail": "reconocimiento facial.gui_pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "procesar_video",
+        "kind": 2,
+        "importPath": "reconocimiento facial.gui_pruebavideo",
+        "description": "reconocimiento facial.gui_pruebavideo",
+        "peekOfCode": "def procesar_video(video_path: str, ventana: tk.Tk):\n    input_p = Path(video_path)\n    output_path = input_p.with_name(input_p.stem + \"_processed.mp4\")\n    # UI refs\n    progress_bar = ventana._progress_bar\n    boton_seleccionar = ventana._boton_seleccionar\n    boton_abrir = ventana._boton_abrir\n    boton_carpeta = ventana._boton_carpeta\n    salida_var = ventana._salida_var\n    # Preparar UI",
+        "detail": "reconocimiento facial.gui_pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "seleccionar_video",
+        "kind": 2,
+        "importPath": "reconocimiento facial.gui_pruebavideo",
+        "description": "reconocimiento facial.gui_pruebavideo",
+        "peekOfCode": "def seleccionar_video(ventana: tk.Tk):\n    video_path = filedialog.askopenfilename(\n        title=\"Seleccionar video\",\n        filetypes=[(\"Archivos de video\", \"*.mp4 *.avi *.mov *.mkv\")],\n    )\n    if video_path:\n        procesar_video(video_path, ventana)\ndef main():\n    ventana = tk.Tk()\n    ventana.title(\"Procesador de Videos\")",
+        "detail": "reconocimiento facial.gui_pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "reconocimiento facial.gui_pruebavideo",
+        "description": "reconocimiento facial.gui_pruebavideo",
+        "peekOfCode": "def main():\n    ventana = tk.Tk()\n    ventana.title(\"Procesador de Videos\")\n    ventana.geometry(\"520x320\")\n    ventana.resizable(False, False)\n    ventana._last_output_path = None  # type: ignore[attr-defined]\n    ventana._salida_var = tk.StringVar(\n        value=\"Selecciona un video para procesar\")  # type: ignore[attr-defined]\n    etiqueta = tk.Label(\n        ventana, text=\"Procesador de Videos\", font=(\"Arial\", 16))",
+        "detail": "reconocimiento facial.gui_pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "red_mask_hsv",
+        "kind": 2,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "def red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"Máscara de rojo en HSV (rojo se parte en dos rangos).\"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)\n    upper1 = np.array([10,  255,   255], dtype=np.uint8)\n    lower2 = np.array([170, s_min, v_min], dtype=np.uint8)\n    upper2 = np.array([180, 255,   255], dtype=np.uint8)\n    m1 = cv2.inRange(hsv, lower1, upper1)\n    m2 = cv2.inRange(hsv, lower2, upper2)\n    mask = cv2.bitwise_or(m1, m2)",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "find_stop_light_boxes",
+        "kind": 2,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "def find_stop_light_boxes(vehicle_roi: np.ndarray,\n                          x0: int, y0: int,\n                          bottom_frac: float,\n                          s_min: int, v_min: int,\n                          min_area: int,\n                          max_area_frac: float,\n                          min_solidity: float):\n    \"\"\"Busca blobs rojos en el % inferior del vehículo.\"\"\"\n    h, w = vehicle_roi.shape[:2]\n    if h < 8 or w < 8:",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "def main():\n    ap = argparse.ArgumentParser()\n    ap.add_argument(\"--input\", required=True, help=\"Video de entrada .mp4\")\n    ap.add_argument(\"--output\", default=\"out_cars_stop.mp4\",\n                    help=\"Video de salida .mp4\")\n    ap.add_argument(\"--model\", default=\"yolo12n.pt\",\n                    help=\"Modelo YOLO (ej: yolo12n.pt)\")\n    ap.add_argument(\"--tracker\", default=\"bytetrack.yaml\",\n                    help=\"bytetrack.yaml o botsort.yaml\")\n    ap.add_argument(\"--conf\", type=float, default=0.25, help=\"Confianza YOLO\")",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "VEHICLE_CLASSES",
+        "kind": 5,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "VEHICLE_CLASSES = [0, 1, 2, 3, 5, 6, 7, 9, 11, 14, 15, 16, 25, 32, 36, 67,]\n# Grosor recomendado para 2.7K\nVEH_THICK = 5\nSTOP_THICK = 6\nTRAIL_THICK = 5\n# Texto\nFONT_SCALE_VEH = 1.0\nFONT_SCALE_STOP = 0.9\nTEXT_THICK = 4\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "VEH_THICK",
+        "kind": 5,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "VEH_THICK = 5\nSTOP_THICK = 6\nTRAIL_THICK = 5\n# Texto\nFONT_SCALE_VEH = 1.0\nFONT_SCALE_STOP = 0.9\nTEXT_THICK = 4\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"Máscara de rojo en HSV (rojo se parte en dos rangos).\"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "STOP_THICK",
+        "kind": 5,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "STOP_THICK = 6\nTRAIL_THICK = 5\n# Texto\nFONT_SCALE_VEH = 1.0\nFONT_SCALE_STOP = 0.9\nTEXT_THICK = 4\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"Máscara de rojo en HSV (rojo se parte en dos rangos).\"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "TRAIL_THICK",
+        "kind": 5,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "TRAIL_THICK = 5\n# Texto\nFONT_SCALE_VEH = 1.0\nFONT_SCALE_STOP = 0.9\nTEXT_THICK = 4\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"Máscara de rojo en HSV (rojo se parte en dos rangos).\"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)\n    upper1 = np.array([10,  255,   255], dtype=np.uint8)",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_SCALE_VEH",
+        "kind": 5,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "FONT_SCALE_VEH = 1.0\nFONT_SCALE_STOP = 0.9\nTEXT_THICK = 4\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"Máscara de rojo en HSV (rojo se parte en dos rangos).\"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)\n    upper1 = np.array([10,  255,   255], dtype=np.uint8)\n    lower2 = np.array([170, s_min, v_min], dtype=np.uint8)\n    upper2 = np.array([180, 255,   255], dtype=np.uint8)",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "FONT_SCALE_STOP",
+        "kind": 5,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "FONT_SCALE_STOP = 0.9\nTEXT_THICK = 4\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"Máscara de rojo en HSV (rojo se parte en dos rangos).\"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)\n    upper1 = np.array([10,  255,   255], dtype=np.uint8)\n    lower2 = np.array([170, s_min, v_min], dtype=np.uint8)\n    upper2 = np.array([180, 255,   255], dtype=np.uint8)\n    m1 = cv2.inRange(hsv, lower1, upper1)",
+        "detail": "reconocimiento facial.pruebavideo",
+        "documentation": {}
+    },
+    {
+        "label": "TEXT_THICK",
+        "kind": 5,
+        "importPath": "reconocimiento facial.pruebavideo",
+        "description": "reconocimiento facial.pruebavideo",
+        "peekOfCode": "TEXT_THICK = 4\ndef red_mask_hsv(bgr: np.ndarray, s_min: int, v_min: int) -> np.ndarray:\n    \"\"\"Máscara de rojo en HSV (rojo se parte en dos rangos).\"\"\"\n    hsv = cv2.cvtColor(bgr, cv2.COLOR_BGR2HSV)\n    lower1 = np.array([0,   s_min, v_min], dtype=np.uint8)\n    upper1 = np.array([10,  255,   255], dtype=np.uint8)\n    lower2 = np.array([170, s_min, v_min], dtype=np.uint8)\n    upper2 = np.array([180, 255,   255], dtype=np.uint8)\n    m1 = cv2.inRange(hsv, lower1, upper1)\n    m2 = cv2.inRange(hsv, lower2, upper2)",
+        "detail": "reconocimiento facial.pruebavideo",
         "documentation": {}
     },
     {
